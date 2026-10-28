@@ -1,0 +1,8 @@
+# Force HTTPS and the bare domain
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://tegarnbygg.se%{REQUEST_URI} [L,R=301]
+
+DirectoryIndex index.html
+Options -Indexes
