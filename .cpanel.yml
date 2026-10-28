@@ -1,0 +1,7 @@
+---
+# cPanel "Git Version Control" deployment (Oderland).
+# Copies everything in public/ (including .htaccess) into the web root.
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/cp -R public/. $DEPLOYPATH
