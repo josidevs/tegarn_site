@@ -1,34 +1,19 @@
-# tegarn_site
+# Tegarn Bygg
 
-Minimal landing page for **tegarnbygg.se**, hosted on GitHub Pages.
+> 🚧 **Work in progress.** This site is under construction. More content is coming soon.
 
-```
-public/index.html                # the site
-.github/workflows/pages.yml      # deploys public/ to GitHub Pages on every push to main
-```
+The official website for **Tegarn Bygg**: [tegarnbygg.se](https://tegarnbygg.se)
 
-Preview locally by opening `public/index.html` in a browser.
+## Status
 
-## Deploy
+- [x] Landing page
+- [ ] More content
 
-1. Push to GitHub. In the repo: **Settings → Pages → Source: GitHub Actions**.
-2. **Settings → Pages → Custom domain:** `tegarnbygg.se`, then tick **Enforce HTTPS**
-   once the certificate is issued (can take up to ~1 hour after DNS resolves).
-3. DNS (in Oderland's DNS management for tegarnbygg.se):
+## Contact
 
-   | Type  | Name | Value                    |
-   |-------|------|--------------------------|
-   | A     | @    | 185.199.108.153          |
-   | A     | @    | 185.199.109.153          |
-   | A     | @    | 185.199.110.153          |
-   | A     | @    | 185.199.111.153          |
-   | AAAA  | @    | 2606:50c0:8000::153      |
-   | AAAA  | @    | 2606:50c0:8001::153      |
-   | AAAA  | @    | 2606:50c0:8002::153      |
-   | AAAA  | @    | 2606:50c0:8003::153      |
-   | CNAME | www  | `<github-user>.github.io` |
+📧 [thomas@tegarnbygg.se](mailto:thomas@tegarnbygg.se)
 
-   Remove any old A/AAAA records for `@`/`www`. **Leave MX/SPF/DKIM records alone**
-   so email to thomas@tegarnbygg.se keeps working.
+## Development
 
-After that, every push to `main` redeploys automatically.
+This is a static site with no build step. Open `public/index.html` in a browser to preview it.
+Every push to `main` deploys the site to GitHub Pages automatically.
