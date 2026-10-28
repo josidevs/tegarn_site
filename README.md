@@ -1,37 +1,34 @@
 # tegarn_site
 
-Minimal landing page for **tegarnbygg.se**, hosted on Oderland (cPanel).
+Minimal landing page for **tegarnbygg.se**, hosted on GitHub Pages.
 
 ```
-public/
-  index.html   # the site
-  .htaccess    # HTTPS + non-www redirect
-.cpanel.yml    # cPanel Git deploy: copies public/ -> ~/public_html/
+public/index.html                # the site
+.github/workflows/pages.yml      # deploys public/ to GitHub Pages on every push to main
 ```
 
 Preview locally by opening `public/index.html` in a browser.
 
-## Deploy to Oderland
+## Deploy
 
-### Option A – cPanel Git Version Control (recommended)
+1. Push to GitHub. In the repo: **Settings → Pages → Source: GitHub Actions**.
+2. **Settings → Pages → Custom domain:** `tegarnbygg.se`, then tick **Enforce HTTPS**
+   once the certificate is issued (can take up to ~1 hour after DNS resolves).
+3. DNS (in Oderland's DNS management for tegarnbygg.se):
 
-1. Push this repo to GitHub/GitLab (or any reachable Git remote).
-2. In Oderland's cPanel: **Files → Git™ Version Control → Create**.
-   - Clone URL: your repo URL (private repos need an SSH deploy key added in cPanel's *SSH Access*).
-   - Repository path: e.g. `repositories/tegarn_site` (**not** `public_html`).
-3. Open the repo in cPanel → **Pull or Deploy** tab → *Update from Remote* → *Deploy HEAD Commit*.
-   cPanel runs `.cpanel.yml`, which copies `public/` into `~/public_html/`.
+   | Type  | Name | Value                    |
+   |-------|------|--------------------------|
+   | A     | @    | 185.199.108.153          |
+   | A     | @    | 185.199.109.153          |
+   | A     | @    | 185.199.110.153          |
+   | A     | @    | 185.199.111.153          |
+   | AAAA  | @    | 2606:50c0:8000::153      |
+   | AAAA  | @    | 2606:50c0:8001::153      |
+   | AAAA  | @    | 2606:50c0:8002::153      |
+   | AAAA  | @    | 2606:50c0:8003::153      |
+   | CNAME | www  | `<github-user>.github.io` |
 
-Future updates: `git push`, then *Update from Remote* + *Deploy HEAD Commit* in cPanel.
+   Remove any old A/AAAA records for `@`/`www`. **Leave MX/SPF/DKIM records alone**
+   so email to thomas@tegarnbygg.se keeps working.
 
-### Option B – Manual upload
-
-Upload the contents of `public/` (including the hidden `.htaccess`) to `public_html/`
-via cPanel **File Manager** or SFTP (host/user from Oderland's welcome email).
-
-### Notes
-
-- Make sure `tegarnbygg.se` is the primary domain of the cPanel account (or that its
-  document root is `public_html`); otherwise adjust `DEPLOYPATH` in `.cpanel.yml`.
-- `.htaccess` forces HTTPS. If the SSL certificate isn't issued yet, run
-  **Security → SSL/TLS Status → Run AutoSSL** in cPanel.
+After that, every push to `main` redeploys automatically.
