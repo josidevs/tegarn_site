@@ -1,8 +1,8 @@
-# Tegarn Bygg
+# Tegarn Bygg AB
 
 > 🚧 **Work in progress.** This site is under construction. More content is coming soon.
 
-The official website for **Tegarn Bygg**: [tegarnbygg.se](https://tegarnbygg.se)
+The official website for **Tegarn Bygg AB**: [tegarnbygg.se](https://tegarnbygg.se)
 
 ## Status
 
@@ -11,7 +11,7 @@ The official website for **Tegarn Bygg**: [tegarnbygg.se](https://tegarnbygg.se)
 
 ## Contact
 
-📧 [thomas@tegarnbygg.se](mailto:thomas@tegarnbygg.se)
+📧 [info@tegarnbygg.se](mailto:info@tegarnbygg.se)
 
 ## Development
 
